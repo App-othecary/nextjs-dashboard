@@ -3,7 +3,10 @@ import postgres from "postgres";
 import { invoices, customers, revenue, users } from "../lib/placeholder-data";
 import { getDatabaseError } from "../lib/database-error";
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
+const sql = postgres(process.env.POSTGRES_URL!, {
+  ssl: "require",
+  prepare: false,
+});
 
 export async function GET() {
   try {
