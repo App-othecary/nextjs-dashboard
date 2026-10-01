@@ -1,7 +1,10 @@
 import postgres from "postgres";
 import { getDatabaseError } from "../lib/database-error";
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
+const sql = postgres(process.env.POSTGRES_URL!, {
+  ssl: "require",
+  prepare: false,
+});
 
 async function listInvoices() {
   const data = await sql`
